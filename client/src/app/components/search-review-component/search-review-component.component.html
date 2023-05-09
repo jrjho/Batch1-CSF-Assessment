@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="submit()" >
+    <!-- <form [formGroup]="form" (ngSubmit)="getGamesProm()" > -->
+
+    <tr>
+        <td>Movie Name:</td>
+        <td><input type="text" size="30" formControlName="movieName"></td>
+    </tr>
+    
+    <tr>
+        <br>
+        <td> <button type = "submit" [disabled]="invalid()">Submit</button></td>
+
+    </tr>
+    <ng-content></ng-content>
+</form>

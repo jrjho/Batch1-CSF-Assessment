@@ -1,0 +1,44 @@
+<div>
+    <h2>Search Results for "{{query}}":</h2>
+    <button type="button" (click)="goBack()">Back</button>
+
+    <!-- <div *ngIf="reviews.length > 0"> -->
+        <div *ngIf="movieProm$ | async as reviews" >
+
+        <table *ngFor="let r of reviews; let idx = index">
+            <tr>
+                <div *ngIf="r.image != ''">
+                    <img src="{{r.image}}" alt="">
+                </div>
+                <div *ngIf="r.image == ''">
+    
+                    <img src="/assets/placeholder.jpg" alt="">
+    
+                </div>
+            </tr>
+            <tr>
+                <h4>{{r.title}} - {{r.rating}}</h4>
+            </tr>
+            <tr>
+                Headline: {{r.headline}}
+            </tr>
+            <tr>
+                Summary: {{r.summary}}
+            </tr>
+            <tr><a (click)="goToLink(idx)" href="">Link</a></tr>
+            <tr>
+                <div *ngIf="r.commentCount == null">
+                    Comment Count: 0
+                </div>
+                <div *ngIf="r.commentCount != null">
+                    Comment Count: {{r.commentCount}}
+                </div>
+    
+            </tr>
+            <tr>
+                <button type="button" (click)="goComment(idx)">Comment</button>
+            </tr>
+        
+        </table>
+    </div>
+</div>
